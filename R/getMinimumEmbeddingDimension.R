@@ -11,11 +11,11 @@
 #' On the other hand, E2(d) is used to distinguish deterministic signals from stochastic signals. For 
 #' deterministic signals, there exist some d such that E2(d)!=1. For stochastic signals,
 #' E2(d) is approximately 1 for all the values. 
-#' @note
-#' The current implementation of this function is fully written in R (as a prototype).
-#' Thus it requires heavy computations and may be quite slow. Future versions of the package
-#' will solve this issue.
 #' 
+#' This function uses the Arya and Mount's C++ ANN library for nearest neighbour search 
+#' (For more information on the ANN library please visit \url{http://www.cs.umd.edu/~mount/ANN/}).
+#' The R wrapper is a modified version of the RANN package code by Samuel E. Kemp and Gregory Jefferis.
+#' @note
 #' In the current version of the package, the automatic detection of stochastic 
 #' signals has not been implemented yet.
 #' @param time.series The original time series.
@@ -27,33 +27,38 @@
 #' @param threshold Numerical value between 0 and 1. The embedding dimension is estimated
 #' using the E1(d) function. E1(d) stops changing when d is greater than or equal to
 #' embedding dimension, staying close to 1. This value establishes a threshold for 
-#' considering that E1(d) has stopped to change. Default: 0.95
+#' considering that E1(d) is close to 1. Default: 0.95
+#' @param max.relative.change Maximum relative change in E1(d) with respect to 
+#' E1(d-1) in order to consider that the E1 function has been stabilized and it will
+#' stop changing. Default: 0.01.
 #' @param do.plot Logical value. If TRUE (default value), a plot of E1(d) and E2(d) is shown.
-#' @param theiler.window Integer denoting the Theiler window:  Two Takens' vectors must be separated by more than
-#'  theiler.window time steps in order to be considered neighbours. By using a Theiler window, we exclude temporally correlated 
-#'  vectors from our estimations. Default: 1.
 #' @references 
 #' Cao, L. Practical method for determining the minimum embedding dimension of a scalar time series. Physica D: Nonlinear Phenomena,
 #' 110,1, pp. 43-50 (1997).
+#' 
+#' Arya S. and Mount D. M. (1993), Approximate nearest neighbor searching, Proc. 4th Ann. ACM-SIAM Symposium on Discrete Algorithms (SODA'93), 271-280.
+#' 
+#' Arya S., Mount D. M., Netanyahu N. S., Silverman R. and Wu A. Y (1998), An optimal algorithm for approximate nearest neighbor searching, Journal of the ACM, 45, 891-923.
 #' @author Constantino A. Garcia
 #' @examples 
 #' \dontrun{
 #' h = henon(do.plot=FALSE) 
 #' dimension = estimateEmbeddingDim(h$x, time.lag=1, max.embedding.dim=6,
-#'              theiler.window=10, threshold=0.9, do.plot=TRUE)
+#'              threshold=0.9, do.plot=TRUE)
 #'              }
 #' @export estimateEmbeddingDim
 estimateEmbeddingDim = function(time.series,  number.points = length(time.series), 
                                           time.lag = 1,  max.embedding.dim = 15,  threshold = 0.95, 
-                                          do.plot = TRUE,  theiler.window = 1){
+                                          max.relative.change = 0.10,
+                                          do.plot = TRUE){
   if (max.embedding.dim < 3) stop("max.embedding.dim should be greater that 2...\n")
   time.series.len = length(time.series)
   data = time.series[(time.series.len/2-number.points/2+1):(time.series.len/2+number.points/2)]
   #if no d verifies E1(d) >= threshold,  then we shall return 0
   embedding.dim = 0 
   # First iteration: get E1(1) and E2(1)
-  E.parameters = getCaoParameters(data,  1,  time.lag,  theiler.window)
-  E.parameters.next.dim = getCaoParameters(data,  2,  time.lag,  theiler.window)
+  E.parameters = getCaoParameters(data,  1,  time.lag)
+  E.parameters.next.dim = getCaoParameters(data,  2,  time.lag)
   E.vector = c(E.parameters$E,  E.parameters.next.dim$E)
   E.star.vector = c(E.parameters$E.star,  E.parameters.next.dim$E.star)
   E1.vector = c(E.vector[[2]]/E.vector[[1]])
@@ -61,15 +66,18 @@ estimateEmbeddingDim = function(time.series,  number.points = length(time.series
   # compute from d = 3 to d = max.embedding.dim
   for (dimension in 3:max.embedding.dim){
     #compute E parameters, E1 and E2
-    E.parameters = getCaoParameters(data, dimension, time.lag, theiler.window)
+    E.parameters = getCaoParameters(data, dimension, time.lag)
     E.vector[[dimension]] = E.parameters$E
     E.star.vector[[dimension]] = E.parameters$E.star
     E1.vector[[dimension-1]] = E.vector[[dimension]]/E.vector[[dimension-1]]
     E2.vector[[dimension-1]] = E.star.vector[[dimension]]/E.star.vector[[dimension-1]]
+    # Error for dimension - 2
+    relative.error = abs(E1.vector[[dimension-1]]-E1.vector[[dimension-2]])/(E1.vector[[dimension-2]])
     #compute if E1(d)>=threshold...If it is the first time it happens(embedding.dim==0), store
     # the dimension
-    if ((embedding.dim==0)&&(E1.vector[[dimension-1]]>=threshold)){
-      embedding.dim = dimension-1
+    if ((embedding.dim==0)&&(E1.vector[[dimension-2]]>=threshold)
+        &&(relative.error < max.relative.change )){
+      embedding.dim = dimension - 2
     }
   }
   #plot graphics
@@ -88,21 +96,19 @@ estimateEmbeddingDim = function(time.series,  number.points = length(time.series
 # private function
 # auxiliar function to compute E,  E1 and E2 based on the 
 # L.Cao article: Practical method for determining the minimum embedding dimension of a scalar time series.
-getCaoParameters = function(data, m, time.lag, theiler.window){
-  if (theiler.window>length(data)) stop("invalid theiler window\n")
+getCaoParameters = function(data, m, time.lag){
+  # theshold for considering that two vectors are at distance 0
+  kZero = 10^-10
   #construct takens vectors of dimensions m and m+1
   takens = buildTakens(data,  m,  time.lag)
   takens.next.dimension = buildTakens(data,  m+1,  time.lag)
-  #get distance in the m dimension to compute nearest neighbour
-  if (m==1){
-    mutual.distance = as.matrix(dist(data,  method = "maximum"))
-  }else{
-    mutual.distance = as.matrix(dist(takens,  method = "maximum"))
-  } 
-  # avoid problems eliminating same vectors from the Takens' matrix
-  mutual.distance[mutual.distance==0] = Inf
-  #number of iterations needed 
+  #get closest neigh
   max.iter = nrow(takens.next.dimension)
+  if (m==1){
+    nearest.neigh = nn.search(data = matrix(data[1:max.iter],ncol=1), query = matrix(data[1:max.iter],ncol=1), k=2, eps=0)
+  }else{
+    nearest.neigh = nn.search(data = takens[1:max.iter,], query= takens[1:max.iter,], k=2, eps=0)
+  } 
   # the a(i, d) parameter from the Cao's article (Equation 1) will be call here
   # min.dist.ratio. On the other hand,  the expression inside the summatory in 
   # equation 4 will be called stochastic.parameter
@@ -110,20 +116,18 @@ getCaoParameters = function(data, m, time.lag, theiler.window){
   stochastic.parameter = c()
   #computing...
   for (takens.position in 1:max.iter){
-    # getClosest neighbour respecting the theiler window. We do not use the 
-    # findAllNeighbours algorithm since we need to ensure that every point has a neighbour! 
-    # We shall use a matrix of distances. We eliminate vectors that
-    # do not respect the Theiler window by putting Infinites
-    if ((takens.position-theiler.window-1)<1) left_index = c() else left_index = 1:(takens.position-theiler.window-1)
-    if ((takens.position+theiler.window+1)>max.iter) right_index = c() else right_index=(takens.position+theiler.window+1):max.iter
-    present.distances = mutual.distance[takens.position, 1:max.iter]
-    present.distances[-c(left_index, right_index)]=Inf
+    # get closest neighbour (avoid picking the same vector with the 2 index)
+    closest.neigh = nearest.neigh$nn.idx[takens.position,2] 
+    if (nearest.neigh$nn.dists[takens.position, 2] < kZero){
+      # We found equal points in phase space... assing NA     
+      min.dist.ratio[[takens.position]] = NA
+    }else{
+      numerator = as.numeric(dist(rbind(takens.next.dimension[takens.position, ], takens.next.dimension[closest.neigh, ]),  method = "maximum"))
+      min.dist.ratio[[takens.position]] = numerator/nearest.neigh$nn.dists[takens.position, 2]
+    }
     
-    # get closest neighbour
-    closest.neigh = as.numeric(which.min(present.distances))
-    numerator = as.numeric(dist(rbind(takens.next.dimension[takens.position, ], takens.next.dimension[closest.neigh, ]),  method = "maximum"))
-    min.dist.ratio[[takens.position]] = numerator/mutual.distance[takens.position, closest.neigh]
     stochastic.parameter[[takens.position]] = abs(data[[takens.position+m*time.lag]]-data[[closest.neigh+m*time.lag]])
   }
-  return (list(E = mean(min.dist.ratio), E.star = mean(stochastic.parameter)))
+
+  return (list(E = mean(min.dist.ratio,na.rm=TRUE), E.star = mean(stochastic.parameter,na.rm=TRUE)))
 }

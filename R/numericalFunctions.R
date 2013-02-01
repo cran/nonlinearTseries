@@ -4,7 +4,6 @@
 rungeKutta=function(func,initial.condition,time,params){
   n.samples = length(time)
   h = time[[2]]-time[[1]]
-  previous.value = initial.condition
   y = matrix(ncol=length(initial.condition), nrow=n.samples)
   y[1,] = initial.condition
   for (i in 2:n.samples){
@@ -20,7 +19,7 @@ rungeKutta=function(func,initial.condition,time,params){
 }
 
 # private method
-# Trapezoidal rule for numerical integration
+# Trapezoidal rule for numerical integration 
 trapezoidalRule = function(x, integrand ){
   index = 2:length(x)
   par(mfrow=c(1,1))
@@ -32,7 +31,27 @@ trapezoidalRule = function(x, integrand ){
 # private method implementing (y(x+h)-y(x-h))/2h 
 differentiate = function(h,y){
   len = length(y)
-  derivative = (y[3:len]-y[1:(len-2)])/(2*h)
+  if (len >= 3){
+    derivative = (y[3:len]-y[1:(len-2)])/(2*h)  
+  }else{
+    # if not possible... use (y(x+h)-y(x))/h
+    derivative = diff(y)/(h)  
+  }
+  
   return(derivative)
 }
   
+differentiateAxis = function(x){
+  len = length(x)
+  if (len >= 3){
+    # We have used the (y(x+h)-y(x-h))/2h  rule ...
+    # Eliminate first and last 
+    axis = x[-c(1,len)]
+  }else{
+    # We have used the (y(x+h)-y(x))/h rule ...
+    # Eliminate last
+    axis = x[-c(len)]
+  }
+  
+  return(axis)
+}

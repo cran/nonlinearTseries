@@ -56,7 +56,7 @@ rqa=function(takens = NULL, time.series=NULL, embedding.dim=2, time.lag = 1,radi
   if (maxDistanceMD <=1) maxDistanceMD=2 # this should not happen
   
   neighs=findAllNeighbours(takens,radius)
-  if (do.plot) recurrencePlotAux(neighs)
+  if (do.plot) {recurrencePlotAux(neighs)}
   hist=getHistograms(neighs,ntakens,lmin,vmin)
   # calculate the number of recurrence points from the recurrence rate. The recurrence
   # rate counts the number of points at every distance in a concrete side of the main diagonal.
@@ -68,9 +68,9 @@ rqa=function(takens = NULL, time.series=NULL, embedding.dim=2, time.lag = 1,radi
   recurrence_rate_vector=hist$recurrenceHist[1:(ntakens-1)]/((ntakens-1):1)
   #percentage of recurrent points
   REC=(numberRecurrencePoints)/ntakens^2
-  diagP=calculateDiagonalParameters(neighs,ntakens,numberRecurrencePoints,lmin,hist$diagonalHist,recurrence_rate_vector,maxDistanceMD)  
+  diagP=calculateDiagonalParameters(ntakens,numberRecurrencePoints,lmin,hist$diagonalHist,recurrence_rate_vector,maxDistanceMD)  
   #paramenters dealing with vertical lines
-  vertP=calculateVerticalParameters(neighs,ntakens,numberRecurrencePoints,vmin,hist$verticalHist)
+  vertP=calculateVerticalParameters(ntakens,numberRecurrencePoints,vmin,hist$verticalHist)
   #join all computations
   rqa.parameters=c(REC=REC,RATIO=diagP$DET/REC,diagP,vertP,list(diagonalHistogram=hist$diagonalHist,recurrenceRate=recurrence_rate_vector))
   class(rqa.parameters) = "rqa"
@@ -100,7 +100,6 @@ recurrencePlot=function(takens = NULL, time.series, embedding.dim, time.lag,radi
   if(is.null(takens)){
     takens = buildTakens( time.series, embedding.dim = embedding.dim, time.lag = time.lag)  
   } 
-  ntakens = nrow(takens)
   neighs=findAllNeighbours(takens,radius)
   recurrencePlotAux(neighs)
 }
@@ -109,7 +108,8 @@ recurrencePlot=function(takens = NULL, time.series, embedding.dim, time.lag,radi
 recurrencePlotAux=function(neighs){
   ntakens=length(neighs)
   neighs.matrix = neighbourListSparseNeighbourMatrix(neighs,ntakens)
-  image(neighs.matrix,xlab="Number of Takens' vector", ylab="Number of Takens' vector")
+  # need a print because it is a trellis object!!
+  print(image(neighs.matrix,xlab="Number of Takens' vector", ylab="Number of Takens' vector"))
     
 }
 
@@ -161,7 +161,7 @@ countRecurrencePoints=function(neighs,ntakens){
 }
 
 
-calculateVerticalParameters=function(neighs,ntakens,numberRecurrencePoints,vmin=2,verticalLinesHistogram){
+calculateVerticalParameters=function(ntakens,numberRecurrencePoints,vmin=2,verticalLinesHistogram){
   #begin parameter computations
   num=sum((vmin:ntakens)*verticalLinesHistogram[vmin:ntakens])
   LAM=num/numberRecurrencePoints
@@ -176,7 +176,7 @@ calculateVerticalParameters=function(neighs,ntakens,numberRecurrencePoints,vmin=
   return(params)
 }
 
-calculateDiagonalParameters=function(neighs,ntakens,numberRecurrencePoints,lmin=2,lDiagonalHistogram,recurrence_rate_vector,maxDistanceMD){
+calculateDiagonalParameters=function(ntakens,numberRecurrencePoints,lmin=2,lDiagonalHistogram,recurrence_rate_vector,maxDistanceMD){
   #begin parameter computations
   num=sum((lmin:ntakens)*lDiagonalHistogram[lmin:ntakens]);
   DET=num/numberRecurrencePoints
