@@ -1,5 +1,5 @@
-87cef2f7dc487ebb85a4e0c61c96528e *DESCRIPTION
-e26756aedf2433c73f9b816a0ea4d34d *NAMESPACE
+20bd9f959978bd65c5fbf7cf04fa4d30 *DESCRIPTION
+4a6bd3f1a0d5ae3a33cb4a7df96edbc5 *NAMESPACE
 738de7b1e22f776741f56e50c2435417 *R/DFA.R
 ffc9c4960f62c117309fe3c7923e6e5a *R/Lyapunov.R
 8ba3d5cc0ebd8a406bd4ea8e664b7cc4 *R/RQA.R
@@ -43,7 +43,7 @@ e5a500c297ef26beedc5da6c85550c0a *man/ikedaMap.Rd
 ff57902e6de9bb39a2e623d94364ed77 *man/logRadius.Rd
 f72c497a158c82a73cc3bc29a50e3782 *man/logisticMap.Rd
 968f98daac0645395bc56f23d58530f3 *man/lorenz.Rd
-9888c2c059009a40ebe0636424d46cbd *man/maxLyapunov.Rd
+49bf53b08414e23b6bccba05eb4c9a85 *man/maxLyapunov.Rd
 91416aa03a6e91a81c4644b4000a9f07 *man/neighbourSearch.Rd
 51d7892f3f77786186cd447cb1b812f2 *man/nlOrder.Rd
 ac41f9d54d539e6f251722cd50adf31c *man/nonLinearNoiseReduction.Rd
@@ -63,7 +63,7 @@ f45cbf3a8e43be54ebd12b700c2a104e *man/timeLag.Rd
 386cdbbbf7afe08c222f3cedc0bb541f *man/timeReversibility.Rd
 39426a202a51674a10e335532a1b2593 *man/windowSizes.Rd
 d8c332dc472ea44eaa7f9a151d96c192 *src/ANN.cpp
-74e9ed8baf49b717c02cd2ba36e938c9 *src/ANN/ANN.h
+53f1b0c346e115397f1c2463e669029f *src/ANN/ANN.h
 01e516b35b438e720b5dcf2763c4ab06 *src/ANN/ANNperf.h
 02390a8bf15826c45a3828a73c017b47 *src/ANN/ANNx.h
 416efb47163b36900c80b1f45ce4e2dc *src/Lyapunov.c
@@ -77,11 +77,11 @@ e18365b2dd7d9a0ee7cca1b8d94fe8ee *src/bd_search.cpp
 b8d59ae85cf1b9591e279a05d752dc1a *src/bd_tree.cpp
 76d2a54c8dc5c0356e945ceb60a3e9fe *src/bd_tree.h
 17c58f7ebc260012b27ef3950c41c0c5 *src/brute.cpp
-dc1a43df9d12d399d9cda6138f555665 *src/corrDim.c
+5f655bf485301400e627a9e0c8eb5c94 *src/corrDim.c
 60bf3a556880f482eb8c69d1c21844ac *src/corrDimFromTakens.c
 d8af3e16775bf37219b0369c88e00ce8 *src/generalizedCorrDimFromTakens.c
 3ba8f4767447d473bc2b92044d83a15b *src/genericFunctions.c
-80f23687bc399ee91d458943722dd4f1 *src/genericFunctions.h
+aa59d5c1327d18bc80dbf13bf9363e07 *src/genericFunctions.h
 5a7e0bd6a02a4baf8a2ef818af2daca2 *src/informationDimension.c
 095ac5f0fa4e501180f81e5305b6a264 *src/kd_dump.cpp
 7295e904ff9393e85abfc2ed0740be74 *src/kd_fix_rad_search.cpp
@@ -97,7 +97,7 @@ f4099512d7650c1243fd1d7345b5d8d7 *src/kd_split.cpp
 2f118ad6f783d9455077ba64d3613de7 *src/kd_util.cpp
 d412681fdefb6fad8061db1c69d88a4e *src/kd_util.h
 05bd3f0bff75b9de5159dff469042d6f *src/neighbourSearch.c
-8b15a6c2d0602a8a22da3500572495c7 *src/neighbourSearch.h
+4c3e3f99f69bc7de97a85412ea115aa2 *src/neighbourSearch.h
 f868c5d49b1a2505a8d403c093c4e0c9 *src/nonlinearNoiseReduction.c
 54c917ba7a4b4ab8ab330a0ce34d2e21 *src/poincareMap.c
 d682bda57b5450eeca0d0afec4454c55 *src/pr_queue.h
