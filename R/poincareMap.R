@@ -26,7 +26,9 @@
 #' \itemize{
 #'    \item The positive Poincare map is formed by all the intersections with the hyperplane in positive direction 
 #'     (defined by the normal vector). The \emph{pm.pos} returns the points of the map whereas that \emph{pm.pos.time} returns
-#'     the number of time steps since the beggining where the intersections occurred.
+#'     the number of time steps since the beggining where the intersections occurred. Note that these time steps probably won't
+#'     be integers since the algorithm uses an interpolation procedure for calculating the
+#'     intersection with the hyperplane.
 #'    \item Similarly we define a negative Poincare map (\emph{pm.neg} and \emph{pm.neg.time}).
 #'    \item  Finally, we may define a two-side Poincare map that stores all the intersections (no matter the direction
 #'     of the intersection) (\emph{pm} and \emph{pm.time}).
@@ -48,7 +50,9 @@
 #' @export poincareMap
 #' @useDynLib nonlinearTseries
 poincareMap=function(time.series=NULL, embedding.dim=2, time.lag=1, takens = NULL, normal.hiperplane.vector = NULL,  hiperplane.point ){
-  if (is.null(takens)){takens = buildTakens(time.series,embedding.dim,time.lag)}
+  if (is.null(takens)){
+    takens = buildTakens(time.series,embedding.dim,time.lag)
+  }
   dimension = ncol(takens)
   n.points = nrow(takens)
   if (is.null(normal.hiperplane.vector)){
@@ -92,7 +96,16 @@ poincareMap=function(time.series=NULL, embedding.dim=2, time.lag=1, takens = NUL
   positive.poincare.map.series = positive.poincare.map.series[1:poincare$numberPositiveCrossings,]
   negative.poincare.map.series = matrix(poincare$negativePoincareMapSeries,nrow=n.points,ncol=dimension)
   negative.poincare.map.series = negative.poincare.map.series[1:poincare$numberNegativeCrossings,]
-  return(list(pm = poincare.map.series, pm.time = poincare$crossingTime[1:poincare$numberCrossings],
-              pm.pos = positive.poincare.map.series, pm.pos.time = poincare$positiveCrossingTime[1:poincare$numberPositiveCrossings],
-              pm.neg = negative.poincare.map.series, pm.neg.time = poincare$negativeCrossingTime[1:poincare$numberNegativeCrossings]))
+  
+  
+  
+  p.map = list(pm = poincare.map.series, pm.time = poincare$crossingTime[1:poincare$numberCrossings],
+               pm.pos = positive.poincare.map.series, pm.pos.time = poincare$positiveCrossingTime[1:poincare$numberPositiveCrossings],
+               pm.neg = negative.poincare.map.series, pm.neg.time = poincare$negativeCrossingTime[1:poincare$numberNegativeCrossings])
+  # add attributes
+  p.map = propagateTakensAttr(p.map, takens)
+  attr(p.map, "normal.hiperplane.vector") = normal.hiperplane.vector
+  attr(p.map, "hiperplane.point") = hiperplane.point 
+  
+  p.map
 }
