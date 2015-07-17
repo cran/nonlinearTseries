@@ -1,8 +1,8 @@
 Package: nonlinearTseries
 Type: Package
 Title: Nonlinear Time Series Analysis
-Version: 0.2.2
-Date: 2015-05-27
+Version: 0.2.3
+Date: 2015-07-17
 Maintainer: Constantino A. Garcia <constantinoantonio.garcia@usc.es>
 Authors@R: c(person("Constantino A.", "Garcia",
                     email = "constantinoantonio.garcia@usc.es",
@@ -10,7 +10,7 @@ Authors@R: c(person("Constantino A.", "Garcia",
             person("Gunther", "Sawitzki",
                     role = "ctb"))
 Description: Functions for nonlinear time series analysis. This package permits 
-             the estimation of the  most-used nonlinear statistics/algorithms
+             the computation of the  most-used nonlinear statistics/algorithms
              including generalized correlation dimension, information dimension,
              largest Lyapunov exponent, sample entropy and Recurrence 
              Quantification Analysis (RQA), among others. Basic routines
@@ -22,16 +22,13 @@ Copyright: ANN library is copyright University of Maryland and Sunil
         Arya and David Mount. R wrapper is based on the ANN library,
         copyright Samuel Kemp 2005-9 and Gregory Jefferis 2009-2013.
         See file COPYRIGHT for details
-Depends: Matrix, rgl, tseries, TSA, Rcpp (>= 0.10.5)
+Depends: Matrix, rgl, tseries, TSA, Rcpp (>= 0.10.5), graphics, stats
 LinkingTo: Rcpp
 Suggests: plot3D, knitr,
 VignetteBuilder: knitr
+NeedsCompilation: yes
+Packaged: 2015-07-25 11:31:31 UTC; gaussllego
 Author: Constantino A. Garcia [aut, cre],
   Gunther Sawitzki [ctb]
 Repository: CRAN
-Repository/R-Forge/Project: nonlinear
-Repository/R-Forge/Revision: 46
-Repository/R-Forge/DateTimeStamp: 2015-06-02 15:30:29
-Date/Publication: 2015-06-03 08:48:15
-NeedsCompilation: yes
-Packaged: 2015-06-02 15:46:01 UTC; rforge
+Date/Publication: 2015-07-25 17:43:38
