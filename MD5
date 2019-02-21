@@ -1,9 +1,9 @@
-0ed9d5267678fb366297805d547e331c *DESCRIPTION
+a8128eb0d4629dc0109a9df83ff83ede *DESCRIPTION
 5761a0be48cc1548ae1d568aebd07d7c *NAMESPACE
 e049db5ceef5c244f885129159a37a07 *R/DFA.R
 efd535a3b98617b08da860b5c0dfef5c *R/Lyapunov.R
 eafc145886e3e32af61b39e8421350cf *R/RQA.R
-134a476ba78502a44933b24865afec33 *R/RcppExports.R
+4a308f3662659f94d8c6ddd58461056d *R/RcppExports.R
 2d612e1b3b2370d75efecae3f8ca82e6 *R/basicNonLinearFunctions.R
 9948589d1a5fd95ed3c70853eca5c215 *R/corrDim.R
 43bf683fd6abc579a7efe7f5b2c3ef94 *R/generics.R
@@ -25,11 +25,11 @@ a09c8d2ea6d241de09433f99f5affe75 *R/spaceTimePlot.R
 8536b80ba111f47e7d1066cfb45bdad4 *R/spectral_functions.R
 fa5320afb2a7369143bed12624e86a7d *R/surrogate.data.R
 25a61bb051e280107ae91e3a10160438 *R/utils.R
-9c1d5c82c790fc43029ee88034201041 *build/vignette.rds
+c3843001ab44a01a298ee30fe4f32e7d *build/vignette.rds
 74d3e50b6ecf0291d5dede27f6f6c73f *inst/COPYRIGHT
 7fd4baba0d9b8ff2761a2b4734cf92d4 *inst/doc/nonlinearTseries_quickstart.R
 697a27c1a9a973bc25aa76c695bcd36f *inst/doc/nonlinearTseries_quickstart.Rmd
-4ec081c25ac93ad7230853aa7d9d6e5f *inst/doc/nonlinearTseries_quickstart.html
+c9d86742be04dfacc42a65b6b0a4018b *inst/doc/nonlinearTseries_quickstart.html
 43246e68dcbff2ce648f36fe6c057919 *man/FFTsurrogate.Rd
 0399245f2b4e17474208dc3e20cb1668 *man/buildTakens.Rd
 5574ca06c5ef86a21544a692165bb07f *man/cliffordMap.Rd
@@ -84,7 +84,7 @@ b2da1550efcf9c5287052183b8e44f81 *src/ANN/ANN_CONSTANTS.h
 4d2fa7f5f1cd73ff5f5085faeeede093 *src/Makevars
 a463c7482db2856554e8857c1e993709 *src/Makevars.win
 c326f505c6b7abf9be51b19ec2207c1a *src/NN.cpp
-fc180084019fee9fd7b3c0ddd06d4467 *src/RcppExports.cpp
+2df4bad8b69ecd460166c80f4cd4391f *src/RcppExports.cpp
 581b55d86ec8bb94d028e69f0b95d44f *src/bd_fix_rad_search.cpp
 10d404510331667b3d9b6208d7e28ece *src/bd_pr_search.cpp
 e18365b2dd7d9a0ee7cca1b8d94fe8ee *src/bd_search.cpp
