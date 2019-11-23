@@ -1,4 +1,4 @@
-a8128eb0d4629dc0109a9df83ff83ede *DESCRIPTION
+087b7c73c7405db6e7bc1a6a8ef99703 *DESCRIPTION
 5761a0be48cc1548ae1d568aebd07d7c *NAMESPACE
 e049db5ceef5c244f885129159a37a07 *R/DFA.R
 efd535a3b98617b08da860b5c0dfef5c *R/Lyapunov.R
@@ -25,11 +25,11 @@ a09c8d2ea6d241de09433f99f5affe75 *R/spaceTimePlot.R
 8536b80ba111f47e7d1066cfb45bdad4 *R/spectral_functions.R
 fa5320afb2a7369143bed12624e86a7d *R/surrogate.data.R
 25a61bb051e280107ae91e3a10160438 *R/utils.R
-c3843001ab44a01a298ee30fe4f32e7d *build/vignette.rds
+ca0762ad31732a2682f550f6831c9701 *build/vignette.rds
 74d3e50b6ecf0291d5dede27f6f6c73f *inst/COPYRIGHT
-7fd4baba0d9b8ff2761a2b4734cf92d4 *inst/doc/nonlinearTseries_quickstart.R
+342dcfa0d41c17850f35d6c7f5d0079c *inst/doc/nonlinearTseries_quickstart.R
 697a27c1a9a973bc25aa76c695bcd36f *inst/doc/nonlinearTseries_quickstart.Rmd
-c9d86742be04dfacc42a65b6b0a4018b *inst/doc/nonlinearTseries_quickstart.html
+2a9639b264ba1bdb2950b76343a41692 *inst/doc/nonlinearTseries_quickstart.html
 43246e68dcbff2ce648f36fe6c057919 *man/FFTsurrogate.Rd
 0399245f2b4e17474208dc3e20cb1668 *man/buildTakens.Rd
 5574ca06c5ef86a21544a692165bb07f *man/cliffordMap.Rd
@@ -81,8 +81,8 @@ b2da1550efcf9c5287052183b8e44f81 *src/ANN/ANN_CONSTANTS.h
 01e516b35b438e720b5dcf2763c4ab06 *src/ANN/ANNperf.h
 02390a8bf15826c45a3828a73c017b47 *src/ANN/ANNx.h
 41a3b0d2e15a87983e41b97e912c16e9 *src/DFA.cpp
-4d2fa7f5f1cd73ff5f5085faeeede093 *src/Makevars
-a463c7482db2856554e8857c1e993709 *src/Makevars.win
+3cab58e1c5794ad1d3f8f19b0c5353aa *src/Makevars
+7aa87fe89ab3b1b5785f10143cd757da *src/Makevars.win
 c326f505c6b7abf9be51b19ec2207c1a *src/NN.cpp
 2df4bad8b69ecd460166c80f4cd4391f *src/RcppExports.cpp
 581b55d86ec8bb94d028e69f0b95d44f *src/bd_fix_rad_search.cpp
@@ -112,7 +112,7 @@ bd08825db3f53f257e7bcc94ed200f8d *src/lyapunov_exponent.cpp
 c4ac82896bd0165fa156d3b9b822ac0e *src/mutual_information.cpp
 108f516b9538426378dede124cf20ae0 *src/neighbour_search.cpp
 7e2f4cc167146ac480dbd690e1953ad4 *src/neighbour_search.h
-d43dce2034054ffe3969ce96c085d399 *src/neighbour_search_wrapper.cpp
+e04cb96082091433eb822a1424c89364 *src/neighbour_search_wrapper.cpp
 5a2b6ce6040678923b1be169a49e62f4 *src/nonlinear_noise_reduction.cpp
 dd2243a456ddcc60e2ec9f25e447cf48 *src/poincare_map.cpp
 bddf592cc6650ebaa815338ad8a0fb63 *src/pr_queue.h
