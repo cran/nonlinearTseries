@@ -1,8 +1,8 @@
 Package: nonlinearTseries
 Type: Package
 Title: Nonlinear Time Series Analysis
-Version: 0.2.7
-Date: 2019-11-22
+Version: 0.2.8
+Date: 2020-3-20
 Maintainer: Constantino A. Garcia <constantino.garciama@ceu.es>
 Authors@R: c(person("Constantino A.", "Garcia",
                     email = "constantino.garciama@ceu.es",
@@ -30,11 +30,11 @@ Imports: Matrix, rgl, tseries, TSA, zoo, Rcpp (>= 0.12.12), graphics,
 LinkingTo: Rcpp, RcppArmadillo
 Suggests: plot3D, knitr, testthat
 VignetteBuilder: knitr
-RoxygenNote: 6.1.1
+RoxygenNote: 7.1.0
 Encoding: UTF-8
 NeedsCompilation: yes
-Packaged: 2019-11-23 14:18:56 UTC; gaussllego
+Packaged: 2020-03-21 18:28:23 UTC; gaussllego
 Author: Constantino A. Garcia [aut, cre],
   Gunther Sawitzki [ctb]
 Repository: CRAN
-Date/Publication: 2019-11-23 15:00:02 UTC
+Date/Publication: 2020-03-22 06:40:06 UTC
