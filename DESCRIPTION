@@ -1,8 +1,8 @@
 Package: nonlinearTseries
 Type: Package
 Title: Nonlinear Time Series Analysis
-Version: 0.2.9
-Date: 2020-5-3
+Version: 0.2.10
+Date: 2020-6-10
 Maintainer: Constantino A. Garcia <constantino.garciama@ceu.es>
 Authors@R: c(person("Constantino A.", "Garcia",
                     email = "constantino.garciama@ceu.es",
@@ -32,8 +32,8 @@ VignetteBuilder: knitr
 RoxygenNote: 7.1.0
 Encoding: UTF-8
 NeedsCompilation: yes
-Packaged: 2020-05-03 19:17:16 UTC; gaussllego
+Packaged: 2020-06-13 09:04:56 UTC; gaussllego
 Author: Constantino A. Garcia [aut, cre],
   Gunther Sawitzki [ctb]
 Repository: CRAN
-Date/Publication: 2020-05-03 19:50:02 UTC
+Date/Publication: 2020-06-13 09:40:02 UTC

@@ -95,7 +95,6 @@
 #' }
 #' @rdname infDim
 #' @export infDim
-#' @exportClass infDim
 #' @useDynLib nonlinearTseries
 #' @seealso \code{\link{corrDim}}.
 infDim = function(time.series, min.embedding.dim=2, 
@@ -284,7 +283,7 @@ estimate.infDim = function(x, regression.range=NULL, do.plot=TRUE,
 #' @param main A title for the plot.
 #' @param xlab A title for the x axis.
 #' @param ylab A title for the y axis.
-#' @param type Type of plot (see \code{\link[graphics]{plot}}).
+#' @param type Type of plot (see \code{?plot}).
 #' @param log A character string which contains "x" if the x axis is to be 
 #' logarithmic, "y" if the y axis is to be logarithmic and "xy" or "yx" if both
 #'  axes are to be logarithmic.

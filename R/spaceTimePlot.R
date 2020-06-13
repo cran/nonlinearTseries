@@ -51,7 +51,6 @@
 #' @author Constantino A. Garcia
 #' @rdname spaceTimePlot
 #' @export spaceTimePlot
-#' @exportClass spaceTimePlot
 #' @useDynLib nonlinearTseries
 spaceTimePlot = function(takens = NULL, time.series = NULL, embedding.dim = 2,
                          time.lag = 1, max.radius = NULL, time.step = 1, 
@@ -128,8 +127,8 @@ contourLines.spaceTimePlot = function(x){
 
 
 #' Obtain the contour lines of the space time plot.
-#' @inherit contourLines
 #' @seealso \code{\link{spaceTimePlot}}
+#' @inheritParams contourLines.spaceTimePlot
 #' @export getContourLines
 getContourLines = function(x){
   UseMethod("getContourLines")
@@ -137,7 +136,6 @@ getContourLines = function(x){
 
 
 
-#' @inherit contourLines.spaceTimePlot
 #' @rdname spaceTimePlot
 #' @export
 getContourLines.spaceTimePlot = function(x){
@@ -150,7 +148,7 @@ getContourLines.spaceTimePlot = function(x){
 #' @param main A title for the plot.
 #' @param xlab A title for the x axis.
 #' @param ylab A title for the y axis.
-#' @param type Type of plot (see \code{\link[graphics]{plot}}).
+#' @param type Type of plot (see \code{?plot}).
 #' @param ylim Numeric vector of length 2, giving the y coordinates range.
 #' @param col Vector of colors for each of the percentages of the plot.
 #' @param pch Vector of symbols for each of the percentages of the plot.
