@@ -1,4 +1,4 @@
-c4daa4f206a44e14cdf9aa511b760b51 *DESCRIPTION
+9699ebad290a29d63f2e0eaed282e8a7 *DESCRIPTION
 c42a954d1d95fd96d5abc9e1ca4a0225 *NAMESPACE
 c4fda8a888e52e51f41bd774f124a504 *R/DFA.R
 778a9af09806bb6e2fd2328bc3f69482 *R/Lyapunov.R
@@ -25,11 +25,11 @@ bd4a37fff3d29e324c3517b20aeea7c6 *R/nonLinearNoiseReduction.R
 8536b80ba111f47e7d1066cfb45bdad4 *R/spectral_functions.R
 fa5320afb2a7369143bed12624e86a7d *R/surrogate.data.R
 fa05be9a8656c4ed063d2777508b1a44 *R/utils.R
-94c139fbcfde65f0a72541f9ec869258 *build/vignette.rds
+7bd581ffca501fcf313209dfbeed3185 *build/vignette.rds
 3881f29b898c25ae9727c0e63ea0077d *inst/COPYRIGHT
 342dcfa0d41c17850f35d6c7f5d0079c *inst/doc/nonlinearTseries_quickstart.R
 3b70be853972c1364dc839a3c5a23d9b *inst/doc/nonlinearTseries_quickstart.Rmd
-92b90279b1e345cc29e6a7adcc8b8a17 *inst/doc/nonlinearTseries_quickstart.html
+a37d74dc198fd2fea0798243301d146f *inst/doc/nonlinearTseries_quickstart.html
 43246e68dcbff2ce648f36fe6c057919 *man/FFTsurrogate.Rd
 0399245f2b4e17474208dc3e20cb1668 *man/buildTakens.Rd
 d040f2ea673617bbaa3bd90820fcd342 *man/cliffordMap.Rd
@@ -87,8 +87,8 @@ b2da1550efcf9c5287052183b8e44f81 *src/ANN/ANN_CONSTANTS.h
 41a3b0d2e15a87983e41b97e912c16e9 *src/DFA.cpp
 3cab58e1c5794ad1d3f8f19b0c5353aa *src/Makevars
 7aa87fe89ab3b1b5785f10143cd757da *src/Makevars.win
-c326f505c6b7abf9be51b19ec2207c1a *src/NN.cpp
-2df4bad8b69ecd460166c80f4cd4391f *src/RcppExports.cpp
+69f95de9adb7672feafc87fcc929565d *src/NN.cpp
+a033ca01c8d45638d2653c3faa9ffb15 *src/RcppExports.cpp
 581b55d86ec8bb94d028e69f0b95d44f *src/bd_fix_rad_search.cpp
 10d404510331667b3d9b6208d7e28ece *src/bd_pr_search.cpp
 e18365b2dd7d9a0ee7cca1b8d94fe8ee *src/bd_search.cpp
