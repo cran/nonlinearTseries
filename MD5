@@ -1,4 +1,4 @@
-e946b4ce9196a327eed0671531496397 *DESCRIPTION
+3b09cbd3ad46a27b2e329d6b3ab03fa0 *DESCRIPTION
 db40d8d0eb9c921c2abb11e9b2c84a1f *NAMESPACE
 c4fda8a888e52e51f41bd774f124a504 *R/DFA.R
 778a9af09806bb6e2fd2328bc3f69482 *R/Lyapunov.R
@@ -25,11 +25,11 @@ bd4a37fff3d29e324c3517b20aeea7c6 *R/nonLinearNoiseReduction.R
 b07d0a24adf342071e32706507bfdab1 *R/spectral_functions.R
 fa5320afb2a7369143bed12624e86a7d *R/surrogate.data.R
 fa05be9a8656c4ed063d2777508b1a44 *R/utils.R
-1378cf6250a42d4a43b7bac2457caef4 *build/vignette.rds
+f16433d27eeb3465641cf70dab24204d *build/vignette.rds
 3881f29b898c25ae9727c0e63ea0077d *inst/COPYRIGHT
 342dcfa0d41c17850f35d6c7f5d0079c *inst/doc/nonlinearTseries_quickstart.R
 3b70be853972c1364dc839a3c5a23d9b *inst/doc/nonlinearTseries_quickstart.Rmd
-d29b504c1c4fedf0abcbfee8a5616627 *inst/doc/nonlinearTseries_quickstart.html
+0e140814b1d304570692ab72ceb74923 *inst/doc/nonlinearTseries_quickstart.html
 43246e68dcbff2ce648f36fe6c057919 *man/FFTsurrogate.Rd
 0399245f2b4e17474208dc3e20cb1668 *man/buildTakens.Rd
 d040f2ea673617bbaa3bd90820fcd342 *man/cliffordMap.Rd
@@ -79,7 +79,7 @@ e466fc122c5439794832a76c5bfe79da *man/timeAsymmetry2.Rd
 5a342152ebe7e0b26a31591e0445af70 *man/timeLag.Rd
 9fc892a73ff6bad5453a2a0944464cde *man/tsayTest.Rd
 39cd9b0e8fb981b99e7dfaa9d88ee3ea *man/windowSizes.Rd
-738787ca46f3360026a1d9982f3de6bf *src/ANN.cpp
+6c15e7a86634247094467c09bc72f367 *src/ANN.cpp
 53f1b0c346e115397f1c2463e669029f *src/ANN/ANN.h
 b2da1550efcf9c5287052183b8e44f81 *src/ANN/ANN_CONSTANTS.h
 01e516b35b438e720b5dcf2763c4ab06 *src/ANN/ANNperf.h
@@ -150,7 +150,7 @@ e544cd80ea7da6027acd8b0dd1018425 *tests/testthat/test_dfa.R
 ce7f19445141ce2b8c22b5a77394a8c9 *tests/testthat/test_generalized_correlation_entropy.R
 657bf39dc47531e9d053d21a370c338a *tests/testthat/test_information_dimension.R
 9f74dac9c9ded46b8c31e01594a2e719 *tests/testthat/test_max_lyapunov.R
-ed89e8c90cb2df0a94f474f9e9a53390 *tests/testthat/test_minimum_embedding.R
+83829372f8d60ac6e0e4179e512cadcf *tests/testthat/test_minimum_embedding.R
 b05b978f93eeb952e4e0e38624567590 *tests/testthat/test_neighbour_search.R
 f505fd959d9e98cf9bb0a63ade062f9c *tests/testthat/test_poincare_map.R
 b1456ab4fdc9868f141e892420c990ce *tests/testthat/test_rqa.R

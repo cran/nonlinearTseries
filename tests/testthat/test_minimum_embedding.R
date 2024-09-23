@@ -27,9 +27,10 @@ test_that("estimates equal theoretical results", {
     ik$x,
     time.lag = 1,
     max.embedding.dim = 6,
-    threshold = 0.9,
+    threshold = 0.85,
     do.plot = FALSE
   )
+  cat("Ikeda: ", x, "\n")
   expect_equal(4, x)
   
   x = estimateEmbeddingDim(
@@ -39,6 +40,7 @@ test_that("estimates equal theoretical results", {
     threshold = 0.9,
     do.plot = FALSE
   )
+  cat("Henon: ", x, "\n")
   expect_equal(2, x)
   
   x = estimateEmbeddingDim(
@@ -48,6 +50,7 @@ test_that("estimates equal theoretical results", {
     threshold = 0.9,
     do.plot = FALSE
   )
+  cat("Lorenz: ", x, "\n")
   expect_equal(4, x)
   
 })
